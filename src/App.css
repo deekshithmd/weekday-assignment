@@ -25,3 +25,10 @@
   width: 24px;
   border-radius: 100%;
 }
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 20px;
+}
