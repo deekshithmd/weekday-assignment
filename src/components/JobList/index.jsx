@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { JobCard } from "../JobCard"
 import { Modal } from "../Modal";
+import "./joblist.css"
 
 export const JobList = ({ jobsList }) => {
     const [showJobDescription, setShowJobDescription] = useState('');

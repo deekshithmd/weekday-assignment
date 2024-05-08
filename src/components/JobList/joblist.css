@@ -1,0 +1,8 @@
+.jobs-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 40px;
+}

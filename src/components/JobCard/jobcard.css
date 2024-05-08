@@ -1,0 +1,60 @@
+.job-card {
+  width: 250px;
+  height: auto;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px -2px #747474;
+}
+
+.heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5d5b5b;
+}
+
+.company-logo {
+  height: 28px;
+  width: 28px;
+  border-radius: 100%;
+}
+
+.role {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 5px 0px;
+}
+
+.location {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 5px 0px;
+}
+
+.job-description {
+  text-align: justify;
+}
+
+.show-more {
+  text-align: center;
+  padding: 3px 0px;
+}
+
+.apply-button {
+  text-decoration: none;
+  width: 100%;
+  padding: 14px 0px;
+  text-align: center;
+  background-color: aquamarine;
+  border-radius: 8px;
+  margin-top: 14px;
+  &:hover {
+    background-color: rgb(98, 245, 196);
+  }
+}
