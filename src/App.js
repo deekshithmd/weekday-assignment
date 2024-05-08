@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateJobs } from './features/jobs/jobSlice';
 import './App.css';
 
 function App() {
-
-  const [jobs, setJobs] = useState([])
+  const { jobsList } = useSelector((state) => state.jobs);
+  const dispatch = useDispatch();
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -23,7 +25,7 @@ function App() {
     fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        setJobs(JSON.parse(result)?.jdList)
+        dispatch(updateJobs(JSON.parse(result)?.jdList))
       })
       .catch((error) => console.error(error));
   }, [])
@@ -31,7 +33,7 @@ function App() {
   return (
     <div className="App">
       {
-        jobs.map(job =>
+        jobsList.map(job =>
           <div key={job?.jdUid}>
 
             <div>
