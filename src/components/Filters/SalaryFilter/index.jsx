@@ -1,23 +1,26 @@
 import { useSelector } from "react-redux";
+import { IoClose } from "react-icons/io5";
+import { FaAngleDown } from "react-icons/fa6";
 
 export const SalaryFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { minSalary } = useSelector((state) => state.jobs);
 
     return (
-        <div>
-            <div>
-                {selectedFilters?.salary ? <div>
-                    <p>{selectedFilters?.salary?.label}<span onClick={() => setSelectedFilters({ ...selectedFilters, salary: null })}>X</span></p>
+        <div className="filter-wrapper">
+            <div className="filter-container">
+                {selectedFilters?.salary ? <div className="single-filter">
+                    <p >{selectedFilters?.salary?.label}</p>
+                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, salary: null })} />
                 </div>
                     :
-                    <input type="text" value={selectedFilters?.salary?.label} placeholder='salary' onFocus={() => setOpenFilter('SALARY')} onChange={(e) => {
+                    <input type="text" value={selectedFilters?.salary?.label} placeholder='Minimum Base Pay Salary' onFocus={() => setOpenFilter('SALARY')} onChange={(e) => {
                         setFilterSearch({ ...filterSearch, salary: e.target.value })
                     }} />
                 }
-                <span onClick={() => setOpenFilter(openFilter === 'SALARY' ? '' : 'SALARY')}>V</span>
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'SALARY' ? '' : 'SALARY')} />
             </div>
             {
-                openFilter === 'SALARY' && <div>
+                openFilter === 'SALARY' && <div className="option-list">
                     {
                         minSalary?.map(salary => {
                             return (

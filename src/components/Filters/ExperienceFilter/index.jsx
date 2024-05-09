@@ -1,23 +1,26 @@
 import { useSelector } from "react-redux";
+import { IoClose } from "react-icons/io5";
+import { FaAngleDown } from "react-icons/fa6";
 
 export const ExperienceFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { minExperience } = useSelector((state) => state.jobs);
 
     return (
-        <div>
-            <div>
-                {selectedFilters?.experience ? <div>
-                    <p>{selectedFilters?.experience}<span onClick={() => setSelectedFilters({ ...selectedFilters, experience: null })}>X</span></p>
+        <div className="filter-wrapper">
+            <div className="filter-container">
+                {selectedFilters?.experience ? <div className="single-filter">
+                    <p>{selectedFilters?.experience}</p>
+                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, experience: null })} />
                 </div>
                     :
-                    <input type="text" value={selectedFilters?.experience} placeholder='experience' onFocus={() => setOpenFilter('EXPERIENCE')} onChange={(e) => {
+                    <input type="text" value={selectedFilters?.experience} placeholder='Experience' onFocus={() => setOpenFilter('EXPERIENCE')} onChange={(e) => {
                         setFilterSearch({ ...filterSearch, experience: e.target.value })
                     }} />
                 }
-                <span onClick={() => setOpenFilter(openFilter === 'EXPERIENCE' ? '' : 'EXPERIENCE')}>V</span>
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'EXPERIENCE' ? '' : 'EXPERIENCE')} />
             </div>
             {
-                openFilter === 'EXPERIENCE' && <div>
+                openFilter === 'EXPERIENCE' && <div className="option-list">
                     {
                         minExperience?.map(experience => {
                             return (
