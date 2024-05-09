@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 20px;
-  padding: 20px 40px;
+  padding: 40px 40px 20px;
 }
 
 input {
@@ -27,6 +27,7 @@ input {
   align-items: center;
   justify-content: space-between;
   min-width: 200px;
+  position: relative;
 }
 
 .option-list {
@@ -103,6 +104,15 @@ input {
   &:hover {
     color: red;
   }
+}
+
+.input-heading {
+  position: absolute;
+  bottom: 103%;
+  left: 0px;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(98, 97, 97);
 }
 
 @media (max-width: 540px) {

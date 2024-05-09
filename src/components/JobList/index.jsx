@@ -4,7 +4,7 @@ import { JobCard } from "../JobCard"
 import { Modal } from "../Modal";
 import "./joblist.css"
 
-export const JobList = ({ jobsList }) => {
+export const JobList = ({ jobsList, selectedFilters }) => {
     const [showJobDescription, setShowJobDescription] = useState('');
     const outsideRef = useRef(null);
 
@@ -19,9 +19,12 @@ export const JobList = ({ jobsList }) => {
     return (
         <div className="jobs-container">
             {
-                jobsList.map(job =>
-                    <JobCard key={job?.jdUid} job={job} handleShowJobDescription={setShowJobDescription} />
-                )
+                jobsList?.length > 0 ?
+                    jobsList.map(job =>
+                        <JobCard key={job?.jdUid} job={job} handleShowJobDescription={setShowJobDescription} />
+                    )
+                    :
+                    <p className="empty-jobs">No matching jobs found</p>
             }
             {
                 showJobDescription?.length > 0 &&

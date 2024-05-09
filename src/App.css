@@ -11,6 +11,11 @@ main {
   max-width: 1440px;
 }
 
+.loader {
+  text-align: center;
+  margin: 20px 0px;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

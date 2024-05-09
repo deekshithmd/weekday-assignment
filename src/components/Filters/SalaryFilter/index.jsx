@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { IoClose } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
+import { DROPDOWN_STATES } from "../../../utils/contants";
 
 export const SalaryFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { minSalary } = useSelector((state) => state.jobs);
@@ -8,19 +9,20 @@ export const SalaryFilter = ({ selectedFilters, setSelectedFilters, filterSearch
     return (
         <div className="filter-wrapper">
             <div className="filter-container">
+                {selectedFilters?.salary > 0 && <span className="input-heading">Salary</span>}
                 {selectedFilters?.salary ? <div className="single-filter">
                     <p >{selectedFilters?.salary?.label}</p>
                     <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, salary: null })} className="cursor-pointer" />
                 </div>
                     :
-                    <input type="text" value={selectedFilters?.salary?.label} placeholder='Minimum Base Pay Salary' onFocus={() => setOpenFilter('SALARY')} onChange={(e) => {
+                    <input type="text" value={selectedFilters?.salary?.label} placeholder='Minimum Base Pay Salary' onFocus={() => setOpenFilter(DROPDOWN_STATES?.SALARY)} onChange={(e) => {
                         setFilterSearch({ ...filterSearch, salary: e.target.value })
                     }} />
                 }
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'SALARY' ? '' : 'SALARY')} className="cursor-pointer" />
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.SALARY ? '' : DROPDOWN_STATES?.SALARY)} className="cursor-pointer" />
             </div>
             {
-                openFilter === 'SALARY' && <div className="option-list">
+                openFilter === DROPDOWN_STATES?.SALARY && <div className="option-list">
                     {
                         minSalary?.map(salary => {
                             return (

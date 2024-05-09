@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { IoClose } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
+import { capitalizeFirstLetter } from "../../../utils/helpers";
+import { DROPDOWN_STATES } from "../../../utils/contants";
 
 export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { locations } = useSelector((state) => state.jobs);
@@ -16,21 +18,22 @@ export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSear
     return (
         <div className="filter-wrapper">
             <div className="filter-container">
+                {selectedFilters?.locations?.length > 0 && <span className="input-heading">Job Location</span>}
                 {selectedFilters?.locations?.length > 0 && <div className="selected-filters">
                     {
                         selectedFilters?.locations?.map(location => {
-                            return <div key={location} className="selected-filter">{location}<div className="cancel-icon-container"><IoClose onClick={() => setSelectedFilters({ ...selectedFilters, locations: selectedFilters?.locations?.filter(l => l !== location) })} /></div></div>
+                            return <div key={location} className="selected-filter">{capitalizeFirstLetter(location)}<div className="cancel-icon-container"><IoClose onClick={() => setSelectedFilters({ ...selectedFilters, locations: selectedFilters?.locations?.filter(l => l !== location) })} /></div></div>
                         })
                     }
                 </div>
                 }
-                <input type="text" placeholder='Job Location' onFocus={() => setOpenFilter('LOCATION')} onChange={(e) => {
+                <input type="text" placeholder='Job Location' onFocus={() => setOpenFilter(DROPDOWN_STATES?.LOCATION)} onChange={(e) => {
                     setFilterSearch({ ...filterSearch, location: e.target.value })
                 }} onKeyDown={handleKey} />
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'LOCATION' ? '' : 'LOCATION')} className="cursor-pointer" />
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.LOCATION ? '' : DROPDOWN_STATES?.LOCATION)} className="cursor-pointer" />
             </div>
             {
-                openFilter === 'LOCATION' && <div className="option-list">
+                openFilter === DROPDOWN_STATES?.LOCATION && <div className="option-list">
                     {
                         locations?.map(location => {
                             return (
@@ -39,13 +42,13 @@ export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSear
                                         e.stopPropagation();
                                         setSelectedFilters({ ...selectedFilters, locations: [...selectedFilters?.locations, location] })
                                         setOpenFilter('')
-                                    }}>{location}</p>
+                                    }}>{capitalizeFirstLetter(location)}</p>
                                     :
                                     <p key={location} onClick={(e) => {
                                         e.stopPropagation();
                                         setSelectedFilters({ ...selectedFilters, locations: [...selectedFilters?.locations, location] })
                                         setOpenFilter('')
-                                    }}>{location}</p>
+                                    }}>{capitalizeFirstLetter(location)}</p>
                             )
                         })
                     }
