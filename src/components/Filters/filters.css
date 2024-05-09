@@ -115,6 +115,11 @@ input {
   color: rgb(98, 97, 97);
 }
 
+.left-border {
+  border-left: 1.5px solid rgb(125, 124, 124);
+  padding-left: 10px;
+}
+
 @media (max-width: 540px) {
   .filter-wrapper {
     width: 100%;

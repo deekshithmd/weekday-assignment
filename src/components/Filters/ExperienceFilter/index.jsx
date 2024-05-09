@@ -19,7 +19,9 @@ export const ExperienceFilter = ({ selectedFilters, setSelectedFilters, filterSe
                         setFilterSearch({ ...filterSearch, experience: e.target.value })
                     }} />
                 }
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.EXPERIENCE ? '' : DROPDOWN_STATES?.EXPERIENCE)} className="cursor-pointer" />
+                <div className="left-border">
+                    <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.EXPERIENCE ? '' : DROPDOWN_STATES?.EXPERIENCE)} className="cursor-pointer" />
+                </div>
             </div>
             {
                 openFilter === DROPDOWN_STATES?.EXPERIENCE && <div className="option-list">

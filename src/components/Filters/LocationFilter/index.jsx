@@ -22,7 +22,7 @@ export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSear
                 {selectedFilters?.locations?.length > 0 && <div className="selected-filters">
                     {
                         selectedFilters?.locations?.map(location => {
-                            return <div key={location} className="selected-filter">{capitalizeFirstLetter(location)}<div className="cancel-icon-container"><IoClose onClick={() => setSelectedFilters({ ...selectedFilters, locations: selectedFilters?.locations?.filter(l => l !== location) })} /></div></div>
+                            return <div key={location} className="selected-filter">{capitalizeFirstLetter(location)}<div className="cancel-icon-container"><IoClose onClick={() => setSelectedFilters({ ...selectedFilters, locations: selectedFilters?.locations?.filter(l => l !== location) })} className="remove" /></div></div>
                         })
                     }
                 </div>
@@ -30,7 +30,9 @@ export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSear
                 <input type="text" placeholder='Job Location' onFocus={() => setOpenFilter(DROPDOWN_STATES?.LOCATION)} onChange={(e) => {
                     setFilterSearch({ ...filterSearch, location: e.target.value })
                 }} onKeyDown={handleKey} />
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.LOCATION ? '' : DROPDOWN_STATES?.LOCATION)} className="cursor-pointer" />
+                <div className="left-border">
+                    <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.LOCATION ? '' : DROPDOWN_STATES?.LOCATION)} className="cursor-pointer" />
+                </div>
             </div>
             {
                 openFilter === DROPDOWN_STATES?.LOCATION && <div className="option-list">

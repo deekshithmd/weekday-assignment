@@ -52,6 +52,7 @@ function App() {
   // Applying filters on data
 
   useEffect(() => {
+    // Job role based filter
     const roleFiltered = selectedFilters?.roles?.length > 0 ? jobsList?.filter(job => {
       let isMatched = false;
       for (let i = 0; i < selectedFilters?.roles?.length; i++) {
@@ -63,6 +64,7 @@ function App() {
       return isMatched;
     }) : jobsList
 
+    // Location based filter
     const locationFiltered = selectedFilters?.locations?.length > 0 ? roleFiltered?.filter(job => {
       let isMatched = false;
       for (let i = 0; i < selectedFilters?.locations?.length; i++) {
@@ -74,14 +76,17 @@ function App() {
       return isMatched;
     }) : roleFiltered
 
+    // Salary based filter
     const salaryFiltered = selectedFilters?.salary ? locationFiltered?.filter(job =>
       job?.minJdSalary >= selectedFilters?.salary?.value
     ) : locationFiltered
 
+    // Experience based filter
     const experienceFiltered = selectedFilters?.experience ? salaryFiltered?.filter(job =>
       job?.minExp >= selectedFilters?.experience
     ) : salaryFiltered
 
+    // Company based filter
     const companyFiltered = selectedFilters?.company?.length > 0 ? experienceFiltered?.filter(job => job?.companyName?.toLowerCase()?.includes(selectedFilters?.company?.toLowerCase())) : experienceFiltered;
 
     dispatch(updateFilteredJobs(companyFiltered))

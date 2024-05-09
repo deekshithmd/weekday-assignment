@@ -19,7 +19,9 @@ export const SalaryFilter = ({ selectedFilters, setSelectedFilters, filterSearch
                         setFilterSearch({ ...filterSearch, salary: e.target.value })
                     }} />
                 }
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.SALARY ? '' : DROPDOWN_STATES?.SALARY)} className="cursor-pointer" />
+                <div className="left-border">
+                    <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.SALARY ? '' : DROPDOWN_STATES?.SALARY)} className="cursor-pointer" />
+                </div>
             </div>
             {
                 openFilter === DROPDOWN_STATES?.SALARY && <div className="option-list">

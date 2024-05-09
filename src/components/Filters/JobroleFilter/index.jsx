@@ -7,6 +7,7 @@ import { DROPDOWN_STATES } from "../../../utils/contants";
 export const JobroleFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { jobRoles } = useSelector((state) => state.jobs);
 
+    // Delete role on backspace
     const handleKey = (e) => {
         if (e.key === 'Backspace' || e.key === 'Delete') {
             const selectedList = [...selectedFilters?.roles];
@@ -29,13 +30,18 @@ export const JobroleFilter = ({ selectedFilters, setSelectedFilters, filterSearc
                 }
                 <input type="text" placeholder='Roles' value={setFilterSearch.role} onFocus={() => setOpenFilter(DROPDOWN_STATES?.ROLE)} onChange={(e) => {
                     setFilterSearch({ ...filterSearch, role: e.target.value })
-                }} onKeyDown={handleKey} /><FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.ROLE ? '' : DROPDOWN_STATES?.ROLE)} className="cursor-pointer" />
+                }} onKeyDown={handleKey} />
+                <div className="left-border">
+                    <FaAngleDown onClick={() => setOpenFilter(openFilter === DROPDOWN_STATES?.ROLE ? '' : DROPDOWN_STATES?.ROLE)} className="cursor-pointer" />
+                </div>
             </div>
+            {/* Jon role list */}
             {
                 openFilter === DROPDOWN_STATES?.ROLE && <div className="option-list">
                     {
                         jobRoles?.map(role => {
                             return (
+                                // Checking whether serach matches with items in list
                                 filterSearch?.role?.length > 0 ?
                                     role?.includes(filterSearch?.role) && <p key={role} onClick={(e) => {
                                         e.stopPropagation();
