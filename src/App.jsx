@@ -35,6 +35,9 @@ function App() {
     body
   };
 
+  // https://gist.github.com/anubhavmalik/1733c9cec2aebde6ecd5bef8b906a690
+
+
   useEffect(() => {
     fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions)
       .then((response) => response.text())
@@ -93,11 +96,9 @@ function App() {
     }
 
     return () => {
-      if (endRef?.current) {
-        observer.unobserve(endRef.current);
-      }
+      observer.disconnect();
     }
-  }, [endRef])
+  }, [])
 
   const updateFilters = (jobs) => {
     let locationList = [...locations];

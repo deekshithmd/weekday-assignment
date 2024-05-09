@@ -1,23 +1,29 @@
 import { useSelector } from "react-redux";
+import { IoClose } from "react-icons/io5";
+import { FaAngleDown } from "react-icons/fa6";
+import { useClickAway } from "../../../hooks/useClickAway";
+import { useRef } from "react";
 
 export const JobroleFilter = ({ selectedFilters, setSelectedFilters, filterSearch, setFilterSearch, openFilter, setOpenFilter }) => {
     const { jobRoles } = useSelector((state) => state.jobs);
+    // const roleRef = useRef(null);
+    // useClickAway({ ref: roleRef, clickHandler: () => setOpenFilter('') })
 
     return (
-        <div>
-            <div>
+        <div className="filter-wrapper">
+            <div className="filter-container">
                 {
                     selectedFilters?.roles?.map(role => {
-                        return <span key={role}>{role}<span onClick={() => setSelectedFilters({ ...selectedFilters, roles: selectedFilters?.roles?.filter(r => r !== role) })}>x</span></span>
+                        return <p key={role} className="selected-filter">{role}<IoClose onClick={() => setSelectedFilters({ ...selectedFilters, roles: selectedFilters?.roles?.filter(r => r !== role) })} /></p>
                     })
                 }
                 <input type="text" placeholder='role' onFocus={() => setOpenFilter('ROLE')} onChange={(e) => {
                     setFilterSearch({ ...filterSearch, role: e.target.value })
 
-                }} /><span onClick={() => setOpenFilter(openFilter === 'ROLE' ? '' : 'ROLE')}>V</span>
+                }} /><FaAngleDown onClick={() => setOpenFilter(openFilter === 'ROLE' ? '' : 'ROLE')} />
             </div>
             {
-                openFilter === 'ROLE' && <div>
+                openFilter === 'ROLE' && <div className="option-list">
                     {
                         jobRoles?.map(role => {
                             return (
