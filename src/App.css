@@ -11,6 +11,10 @@ main {
   max-width: 1440px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .font-normal {
   font-weight: 400;
 }

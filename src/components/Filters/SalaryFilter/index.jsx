@@ -10,14 +10,14 @@ export const SalaryFilter = ({ selectedFilters, setSelectedFilters, filterSearch
             <div className="filter-container">
                 {selectedFilters?.salary ? <div className="single-filter">
                     <p >{selectedFilters?.salary?.label}</p>
-                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, salary: null })} />
+                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, salary: null })} className="cursor-pointer" />
                 </div>
                     :
                     <input type="text" value={selectedFilters?.salary?.label} placeholder='Minimum Base Pay Salary' onFocus={() => setOpenFilter('SALARY')} onChange={(e) => {
                         setFilterSearch({ ...filterSearch, salary: e.target.value })
                     }} />
                 }
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'SALARY' ? '' : 'SALARY')} />
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'SALARY' ? '' : 'SALARY')} className="cursor-pointer" />
             </div>
             {
                 openFilter === 'SALARY' && <div className="option-list">

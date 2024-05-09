@@ -9,11 +9,11 @@ export const Filters = ({ selectedFilters, setSelectedFilters, filterSearch, set
 
     return (
         <div className='filters-container'>
+            <CompanySearch selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} />
+            <JobroleFilter selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} filterSearch={filterSearch} setFilterSearch={setFilterSearch} openFilter={openFilter} setOpenFilter={setOpenFilter} />
             <ExperienceFilter selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} filterSearch={filterSearch} setFilterSearch={setFilterSearch} openFilter={openFilter} setOpenFilter={setOpenFilter} />
             <SalaryFilter selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} filterSearch={filterSearch} setFilterSearch={setFilterSearch} openFilter={openFilter} setOpenFilter={setOpenFilter} />
             <LocationFilter selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} filterSearch={filterSearch} setFilterSearch={setFilterSearch} openFilter={openFilter} setOpenFilter={setOpenFilter} />
-            <CompanySearch selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} />
-            <JobroleFilter selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} filterSearch={filterSearch} setFilterSearch={setFilterSearch} openFilter={openFilter} setOpenFilter={setOpenFilter} />
         </div>
     )
 }

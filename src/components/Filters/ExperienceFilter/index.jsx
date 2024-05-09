@@ -10,14 +10,14 @@ export const ExperienceFilter = ({ selectedFilters, setSelectedFilters, filterSe
             <div className="filter-container">
                 {selectedFilters?.experience ? <div className="single-filter">
                     <p>{selectedFilters?.experience}</p>
-                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, experience: null })} />
+                    <IoClose onClick={() => setSelectedFilters({ ...selectedFilters, experience: null })} className="cursor-pointer" />
                 </div>
                     :
                     <input type="text" value={selectedFilters?.experience} placeholder='Experience' onFocus={() => setOpenFilter('EXPERIENCE')} onChange={(e) => {
                         setFilterSearch({ ...filterSearch, experience: e.target.value })
                     }} />
                 }
-                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'EXPERIENCE' ? '' : 'EXPERIENCE')} />
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'EXPERIENCE' ? '' : 'EXPERIENCE')} className="cursor-pointer" />
             </div>
             {
                 openFilter === 'EXPERIENCE' && <div className="option-list">
@@ -29,13 +29,13 @@ export const ExperienceFilter = ({ selectedFilters, setSelectedFilters, filterSe
                                         e.stopPropagation();
                                         setSelectedFilters({ ...selectedFilters, experience })
                                         setOpenFilter('')
-                                    }}>{experience}</p>
+                                    }}>{experience} years</p>
                                     :
                                     <p key={experience} onClick={(e) => {
                                         e.stopPropagation();
                                         setSelectedFilters({ ...selectedFilters, experience })
                                         setOpenFilter('')
-                                    }}>{experience}</p>
+                                    }}>{experience} years</p>
                             )
                         })
                     }

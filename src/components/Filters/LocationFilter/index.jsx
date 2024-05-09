@@ -16,16 +16,18 @@ export const LocationFilter = ({ selectedFilters, setSelectedFilters, filterSear
     return (
         <div className="filter-wrapper">
             <div className="filter-container">
-                <div className="selected-filters">
+                {selectedFilters?.locations?.length > 0 && <div className="selected-filters">
                     {
                         selectedFilters?.locations?.map(location => {
                             return <div key={location} className="selected-filter">{location}<div className="cancel-icon-container"><IoClose onClick={() => setSelectedFilters({ ...selectedFilters, locations: selectedFilters?.locations?.filter(l => l !== location) })} /></div></div>
                         })
                     }
                 </div>
+                }
                 <input type="text" placeholder='Job Location' onFocus={() => setOpenFilter('LOCATION')} onChange={(e) => {
                     setFilterSearch({ ...filterSearch, location: e.target.value })
-                }} onKeyDown={handleKey} /><FaAngleDown onClick={() => setOpenFilter(openFilter === 'LOCATION' ? '' : 'LOCATION')} />
+                }} onKeyDown={handleKey} />
+                <FaAngleDown onClick={() => setOpenFilter(openFilter === 'LOCATION' ? '' : 'LOCATION')} className="cursor-pointer" />
             </div>
             {
                 openFilter === 'LOCATION' && <div className="option-list">

@@ -1,3 +1,4 @@
+import { FiExternalLink } from "react-icons/fi";
 import './jobcard.css'
 
 export const JobCard = ({ job, handleShowJobDescription }) => {
@@ -16,7 +17,7 @@ export const JobCard = ({ job, handleShowJobDescription }) => {
                 </div>
                 <p className='font-medium'>Min Experience : <span className='font-normal'>{job?.minExp ? `${job?.minExp} Years` : 'Not mentioned'}</span></p>
             </div>
-            <a href={job?.jdLink} rel='noreferrer' target='_blank' className='apply-button font-semibold'>Apply</a>
+            <a href={job?.jdLink} rel='noreferrer' target='_blank' className='apply-button font-semibold'>Easy Apply <FiExternalLink /></a>
         </div>
     )
 }

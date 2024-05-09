@@ -1,5 +1,5 @@
 .job-card {
-  width: 250px;
+  width: 100%;
   height: auto;
   border-radius: 20px;
   padding: 20px;
@@ -63,6 +63,10 @@
   background-color: aquamarine;
   border-radius: 8px;
   margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
   &:hover {
     background-color: rgb(98, 245, 196);
   }
